@@ -1,0 +1,36 @@
+/* ============================================================
+
+    Site wide variables, declare all variables here, including
+    library ones like bootstrap, animate ect.
+
+   ============================================================ */
+
+
+/* COLORS
+--------------------------------------------------------------- */
+
+$brand-color-primary-blue: #133156; // main blue
+$brand-color-secondary-blue: #1472d7; // aqua
+
+$global-color-white: #ffffff;
+$global-color-light-grey: #f9f9f9;
+$global-color-grey: #dcdcdc;
+$global-color-dark-grey: #696c6f;
+$global-color-black: #000000;
+
+$global-color-promo-red: #d8222d;
+$global-color-error-red: #bd0000;
+
+
+/* BOOTSTRAP OVERRIDES
+--------------------------------------------------------------- */
+
+$font-size-base: 14px;
+
+$gray-darker: $global-color-dark-grey;
+$gray-dark: $global-color-dark-grey;
+$gray: $global-color-grey;
+$gray-light: $global-color-light-grey;
+$gray-lighter: $global-color-light-grey;
+
+$brand-primary: $brand-color-primary-blue;

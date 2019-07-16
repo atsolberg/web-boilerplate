@@ -1,0 +1,69 @@
+/* Variables to be imported in javascript for use with emotion */
+
+@import 'variables.scss';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/variables';
+
+:export {
+  fontFamilyBase: $font-family-base;
+  fontFamilyMonospace: $font-family-monospace;
+  fontFamilySansSerif: $font-family-sans-serif;
+  fontFamilySerif: $font-family-serif;
+
+  fontSizeBase: $font-size-base;
+  fontSizeLarge: $font-size-large;
+  fontSizeSmall: $font-size-small;
+
+  lineHeightLarge: $line-height-large;
+  lineHeightSmall: $line-height-small;
+
+  paddingLargeVertical: $padding-large-vertical;
+  paddingLargeHorizontal: $padding-large-horizontal;
+
+  paddingBaseVertical: $padding-base-vertical;
+  paddingBaseHorizontal: $padding-base-horizontal;
+  paddingSmallVertical: $padding-small-vertical;
+  paddingSmallHorizontal: $padding-small-horizontal;
+  paddingXsVertical: $padding-xs-vertical;
+  paddingXsHorizontal: $padding-xs-horizontal;
+
+  borderRadiusBase: $border-radius-base;
+  borderRadiusLarge: $border-radius-large;
+  borderRadiusSmall: $border-radius-small;
+
+  screenSmMin: $screen-sm-min;
+  screenMdMin: $screen-md-min;
+  screenLgMin: $screen-lg-min;
+  screenXsMax: $screen-xs-max;
+  screenSmMax: $screen-sm-max;
+  screenMdMax: $screen-md-max;
+
+  screenDesktop: $screen-desktop;
+  screenTablet: $screen-tablet;
+  screenMobile: $screen-xs-max;
+
+  gridColumns: $grid-columns;
+  gridGutterWidth: $grid-gutter-width;
+  gridFloatBreakpoint: $grid-float-breakpoint;
+  gridFloatBreakpointMax: $grid-float-breakpoint-max;
+
+  containerTablet: $container-tablet;
+  containerSm: $container-sm;
+  containerDesktop: $container-desktop;
+  containerMd: $container-md;
+  containerLargeDesktop: $container-large-desktop;
+  containerLg: $container-lg;
+
+  navLinkPadding: $nav-link-padding;
+
+  brandColorPrimaryBlue: $brand-color-primary-blue;
+  brandColorSecondaryBlue: $brand-color-secondary-blue;
+
+  globalColorWhite: $global-color-white;
+  globalColorBlack: $global-color-black;
+  globalColorLightGrey: $global-color-light-grey;
+  globalColorGrey: $global-color-grey;
+  globalColorDarkGrey: $global-color-dark-grey;
+
+  globalColorPromoRed: $global-color-promo-red;
+  globalColorErrorRed: $global-color-error-red;
+}
