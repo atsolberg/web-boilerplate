@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { node, string, bool, shape, any } from 'prop-types';
 import cx from 'classnames';
 
-import ControlLabel from 'react-bootstrap/es/ControlLabel';
+import FormLabel from 'react-bootstrap/es/FormLabel';
 import FormGroup from 'react-bootstrap/es/FormGroup';
 import Phone from 'react-phone-number-input';
 
@@ -71,10 +71,10 @@ class PhoneInput extends Component {
     }
 
     const elLabel = label ? (
-      <ControlLabel>
+      <FormLabel>
         {required && <span className="required-label">*</span>}
         {label}
-      </ControlLabel>
+      </FormLabel>
     ) : null;
 
     if (error) {

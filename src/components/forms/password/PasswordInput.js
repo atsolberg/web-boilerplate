@@ -5,8 +5,7 @@ import Popover from 'react-bootstrap/es/Popover';
 
 import FormGroup from 'react-bootstrap/es/FormGroup';
 import FormControl from 'react-bootstrap/es/FormControl';
-import ControlLabel from 'react-bootstrap/es/ControlLabel';
-import HelpBlock from 'react-bootstrap/es/HelpBlock';
+import FormLabel from 'react-bootstrap/es/FormLabel';
 
 import { debounce } from '../../../function';
 
@@ -186,8 +185,8 @@ class PasswordInput extends Component {
             controlId={htmlId}
           >
             {required && <span className="required-label">*</span>}
-            {label && <ControlLabel>{label}</ControlLabel>}
-            {desc && <HelpBlock className="control-desc"> {desc}</HelpBlock>}
+            {label && <FormLabel>{label}</FormLabel>}
+            {desc && <div className="control-desc"> {desc}</div>}
 
             <div className="form-control-wrapper">
               <FormControl

@@ -1,14 +1,11 @@
 import { css } from '@emotion/core';
 
 import { tablet } from '../../styles/breakpoints';
-import {
-  brandColorSecondaryBlue,
-  globalColorGrey
-} from '../../styles/variables-export.scss';
+import { primary, gray, gray_dark } from '../../styles/variables-export.scss';
 
 const styles = css`
   &.paging {
-    border-top: 1px solid ${globalColorGrey};
+    border-top: 1px solid ${gray};
     padding: 15px 0;
     text-align: center;
   }
@@ -26,14 +23,14 @@ const styles = css`
     &,
     &:hover,
     &:focus {
-      color: ${brandColorSecondaryBlue};
+      color: ${primary};
       text-transform: uppercase;
     }
     &.disabled,
     &.disabled:hover,
     &.btn-link[disabled] {
       opacity: 1;
-      color: ${globalColorDarkGrey};
+      color: ${gray_dark};
       cursor: default;
     }
   }

@@ -1,69 +1,33 @@
 /* Variables to be imported in javascript for use with emotion */
 
-@import 'variables.scss';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap/variables';
+@import "imports";
 
 :export {
-  fontFamilyBase: $font-family-base;
-  fontFamilyMonospace: $font-family-monospace;
-  fontFamilySansSerif: $font-family-sans-serif;
-  fontFamilySerif: $font-family-serif;
+  font_family_base: $font-family-base;
+  font_family_monospace: $font-family-monospace;
+  font_family_sans_serif: $font-family-sans-serif;
 
-  fontSizeBase: $font-size-base;
-  fontSizeLarge: $font-size-large;
-  fontSizeSmall: $font-size-small;
+  font_size_sm: $font-size-sm;
+  font_size_base: $font-size-base;
+  font_size_lg: $font-size-lg;
 
-  lineHeightLarge: $line-height-large;
-  lineHeightSmall: $line-height-small;
+  line_height_sm: $line-height-sm;
+  line_height_base: $line-height-base;
+  line_height_lg: $line-height-lg;
 
-  paddingLargeVertical: $padding-large-vertical;
-  paddingLargeHorizontal: $padding-large-horizontal;
+  border_radius_sm: $border-radius-sm;
+  border_radius_base: $border-radius;
+  border_radius_lg: $border-radius-lg;
 
-  paddingBaseVertical: $padding-base-vertical;
-  paddingBaseHorizontal: $padding-base-horizontal;
-  paddingSmallVertical: $padding-small-vertical;
-  paddingSmallHorizontal: $padding-small-horizontal;
-  paddingXsVertical: $padding-xs-vertical;
-  paddingXsHorizontal: $padding-xs-horizontal;
+  screen_mobile: $screen-mobile;
+  screen_tablet: $screen-tablet;
+  screen_desktop: $screen-desktop;
 
-  borderRadiusBase: $border-radius-base;
-  borderRadiusLarge: $border-radius-large;
-  borderRadiusSmall: $border-radius-small;
-
-  screenSmMin: $screen-sm-min;
-  screenMdMin: $screen-md-min;
-  screenLgMin: $screen-lg-min;
-  screenXsMax: $screen-xs-max;
-  screenSmMax: $screen-sm-max;
-  screenMdMax: $screen-md-max;
-
-  screenDesktop: $screen-desktop;
-  screenTablet: $screen-tablet;
-  screenMobile: $screen-xs-max;
-
-  gridColumns: $grid-columns;
-  gridGutterWidth: $grid-gutter-width;
-  gridFloatBreakpoint: $grid-float-breakpoint;
-  gridFloatBreakpointMax: $grid-float-breakpoint-max;
-
-  containerTablet: $container-tablet;
-  containerSm: $container-sm;
-  containerDesktop: $container-desktop;
-  containerMd: $container-md;
-  containerLargeDesktop: $container-large-desktop;
-  containerLg: $container-lg;
-
-  navLinkPadding: $nav-link-padding;
-
-  brandColorPrimaryBlue: $brand-color-primary-blue;
-  brandColorSecondaryBlue: $brand-color-secondary-blue;
-
-  globalColorWhite: $global-color-white;
-  globalColorBlack: $global-color-black;
-  globalColorLightGrey: $global-color-light-grey;
-  globalColorGrey: $global-color-grey;
-  globalColorDarkGrey: $global-color-dark-grey;
-
-  globalColorPromoRed: $global-color-promo-red;
-  globalColorErrorRed: $global-color-error-red;
+  primary: $blue;
+  white: $white;
+  black: $black;
+  light: $light;
+  gray: $gray;
+  gray_dark: $gray-dark;
+  danger: $danger;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { string, bool } from 'prop-types';
-import RbsCheckbox from 'react-bootstrap/es/Checkbox';
+import RbsCheckbox from 'react-bootstrap/es/FormCheck';
 import FormGroup from 'react-bootstrap/es/FormGroup';
 
 import HtmlId from '../../html-id/HtmlId';

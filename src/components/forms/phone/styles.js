@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import {
-  brandColorSecondaryBlue,
-  globalColorErrorRed
+  primary,
+  danger
 } from '../../../styles/variables-export.scss';
 
 const styles = css`
@@ -11,7 +11,7 @@ const styles = css`
 
   &.has-error {
     .form-control {
-      border: 1px solid ${globalColorErrorRed};
+      border: 1px solid ${danger};
       transition: border 100ms ease;
     }
 
@@ -20,13 +20,13 @@ const styles = css`
     }
 
     label {
-      color: ${globalColorErrorRed};
+      color: ${danger};
     }
   }
 
   &.has-focus {
     .form-control {
-      border: 1px solid ${brandColorSecondaryBlue};
+      border: 1px solid ${primary};
       transition: border 100ms ease;
     }
   }

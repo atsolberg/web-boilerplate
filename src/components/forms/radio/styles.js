@@ -1,9 +1,8 @@
 import { css } from '@emotion/core';
 import {
-  brandColorPrimaryBlue,
-  brandColorSecondaryBlue,
-  globalColorDarkGrey,
-  globalColorBlack
+  primary,
+  gray_dark,
+  black
 } from '../../../styles/variables-export.scss';
 
 const styles = css`
@@ -17,7 +16,7 @@ const styles = css`
   input + .radio-button::before {
     background-color: #fff;
     border-radius: 100%;
-    border: 1px solid ${globalColorDarkGrey};
+    border: 1px solid ${gray_dark};
     content: '';
     cursor: pointer;
     display: inline-block;
@@ -32,24 +31,24 @@ const styles = css`
   }
 
   input:checked + .radio-button::before {
-    background-color: ${brandColorSecondaryBlue};
-    border-color: ${brandColorSecondaryBlue};
+    background-color: ${primary};
+    border-color: ${primary};
     box-shadow: inset 0 0 0 4px #fff;
   }
 
   input:focus:checked + .radio-button::before {
-    background-color: ${brandColorPrimaryBlue};
+    background-color: ${primary};
   }
 
   &.disabled label {
-    color: ${globalColorBlack};
+    color: ${black};
   }
 
   input:disabled + .radio-button::before {
-    background-color: ${globalColorDarkGrey};
-    border-color: ${globalColorDarkGrey};
+    background-color: ${gray_dark};
+    border-color: ${gray_dark};
     box-shadow: inset 0 0 0 4px #fff;
-    border: 1px solid ${globalColorDarkGrey};
+    border: 1px solid ${gray_dark};
     cursor: not-allowed;
   }
 

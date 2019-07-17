@@ -1,0 +1,137 @@
+@import "imports";
+
+/* ============================================================
+
+    Defines some additional mixins not already in bootstraps
+    mixins.
+
+    TABLE OF CONTENTS
+
+    MISC
+    POSITIONING
+    BACKGROUNDS
+    BORDERS
+    COMPONENTS - BUTTONS
+
+   ============================================================ */
+
+/* ============================================================
+   MISC
+   ============================================================ */
+
+@mixin tablet {
+  @media (min-width: $screen-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $screen-desktop) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $screen-mobile) {
+    @content;
+  }
+}
+
+/* ============================================================
+   POSITIONING
+   ============================================================ */
+
+// Translate the block to the center vertically
+// and horizontally.
+@mixin center-block($left: null, $right: null) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Translate the block to the center vertically
+// and set the `left` or `right` if provided.
+@mixin v-center-block($left: null, $right: null) {
+  position: absolute;
+  @if variable-exists(left) {
+    left: $left;
+  }
+  @if variable-exists(right) {
+    right: $right;
+  }
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// Translate the block to the center horizontally
+// and set the `top` if provided.
+@mixin h-center-block($top: null) {
+  position: absolute;
+  @if variable-exists(top) {
+    top: $top;
+  }
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ============================================================
+   BACKGROUNDS
+   ============================================================ */
+
+@mixin bg-center-cover($img) {
+  background: url($img) no-repeat center center scroll;
+  background-size: cover;
+}
+
+@mixin bg-gradient($bgcolor: $primary, $transparency: 0.5) {
+  background-color: $bgcolor;
+  @include gradient-x-three-colors(
+      $start-color: $bgcolor,
+      $mid-color: transparentize($white, $transparency),
+      $end-color: $bgcolor
+  );
+}
+
+/* ============================================================
+   BORDERS
+   ============================================================ */
+
+@mixin border-tail($color, $height: 18px, $width: 15px) {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: solid $height $color;
+  border-left: solid $width transparent;
+  border-right: solid $width transparent;
+  z-index: 1;
+}
+
+@mixin shadow() {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.24);
+}
+
+/* ============================================================
+   COMPONENTS - BUTTONS
+   ============================================================ */
+
+// Button sizes with all 4 vertical and horizontal padding options.
+@mixin button-size-full(
+  $padding-top,
+  $padding-right,
+  $padding-bottom,
+  $padding-left,
+  $font-size,
+  $line-height,
+  $border-radius
+) {
+  padding: $padding-top $padding-right $padding-bottom $padding-left;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}

@@ -1,0 +1,18 @@
+/* Import our variables FIRST so we can override bootstrap's variables */
+@import 'variables';
+
+/* Import library variables */
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~font-awesome/scss/variables';
+
+/* Set variables that depend on bootstrap variables */
+$screen-mobile: map-get($grid-breakpoints, "sm");
+$screen-tablet: map-get($grid-breakpoints, "md");
+$screen-desktop: map-get($grid-breakpoints, "lg");
+
+$gray: map-get($colors, "gray");
+$gray-dark: map-get($colors, "gray-dark");
+
+/* Import our mixins */
+@import 'mixins';

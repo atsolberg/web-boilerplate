@@ -1,8 +1,8 @@
 import { css } from '@emotion/core';
 
 import {
-  globalColorDarkGrey,
-  globalColorBlack
+  gray_dark,
+  black
 } from '../../styles/variables-export.scss';
 
 const styles = css`
@@ -20,7 +20,7 @@ const styles = css`
     height: 24px;
 
     &[disabled] {
-      color: ${globalColorDarkGrey};
+      color: ${gray_dark};
     }
     &.-decrease {
       padding-left: 0;
@@ -28,7 +28,7 @@ const styles = css`
   }
 
   .stepper-text {
-    color: ${globalColorBlack};
+    color: ${black};
     display: inline-block;
     font-size: 14px;
     margin: 0 6px;

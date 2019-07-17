@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import FormGroup from 'react-bootstrap/es/FormGroup';
-import Radio from 'react-bootstrap/es/Radio';
+import FormCheck from 'react-bootstrap/es/FormCheck';
 
 import HtmlId from '../../html-id/HtmlId';
 import Spinner from '../../spinner/Spinner';
@@ -21,7 +21,8 @@ function RadioButton({
     <HtmlId id={id}>
       {(htmlId) => (
         <FormGroup className={cx({ 'has-error': !!error })} controlId={htmlId}>
-          <Radio
+          <FormCheck
+            type="radio"
             disabled={disabled || busy}
             css={styles}
             className={cx(className, { busy })}
@@ -34,7 +35,7 @@ function RadioButton({
               </div>
             )}
             <div className="radio-label">{children}</div>
-          </Radio>
+          </FormCheck>
         </FormGroup>
       )}
     </HtmlId>

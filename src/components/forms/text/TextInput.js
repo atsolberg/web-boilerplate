@@ -11,10 +11,9 @@ import {
 } from 'prop-types';
 import cx from 'classnames';
 
-import ControlLabel from 'react-bootstrap/es/ControlLabel';
+import FormLabel from 'react-bootstrap/es/FormLabel';
 import FormControl from 'react-bootstrap/es/FormControl';
 import FormGroup from 'react-bootstrap/es/FormGroup';
-import HelpBlock from 'react-bootstrap/es/HelpBlock';
 
 import HtmlId from '../../html-id/HtmlId';
 
@@ -63,8 +62,8 @@ function TextInput({
           {label && (
             <>
               {required && <span className="required-label">*</span>}
-              <ControlLabel>{label}</ControlLabel>
-              {desc && <HelpBlock>{desc}</HelpBlock>}
+              <FormLabel>{label}</FormLabel>
+              {desc && <div className="control-desc">{desc}</div>}
             </>
           )}
           <FormControl type="text" required={required} {...dynamicAttrs} />

@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import { mobile, tablet, desktop } from '../../../styles/breakpoints';
-import { brandColorSecondaryBlue } from '../../../styles/variables-export.scss';
+import { primary } from '../../../styles/variables-export.scss';
 
 const styles = css`
   .form-control-wrapper {
@@ -79,7 +79,7 @@ const styles = css`
 
   &.peak {
     .pass-peak .fa {
-      color: ${brandColorSecondaryBlue};
+      color: ${primary};
     }
   }
 `;

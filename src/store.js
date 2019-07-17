@@ -6,7 +6,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import $ from 'jquery';
 
 import { styles, css } from './constants';
-import { prop, values } from './object';
+import { prop } from './object';
 import { noop } from './function';
 import { uuid } from './string';
 import { isDebugMode, isDevMode, format, formats } from './misc';

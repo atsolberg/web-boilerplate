@@ -1,0 +1,1199 @@
+@import "imports";
+
+/* ============================================================
+
+    Universal utility classes for use throughout the app.
+
+    TABLE OF CONTENTS:
+
+    GENERAL
+    CONTAINERS
+    GRIDS
+    TYPOGRAPHY
+      TEXT COLOR
+      LINK HOVER
+      TEXT TRANSFORM
+      TEXT SIZE
+      TEXT ALIGNMENT
+      TEXT WEIGHT
+    SPACING
+    SCROLLING
+    SIZING
+    POSITIONING
+    ROTATION
+
+   ============================================================ */
+
+/* ============================================================
+   GENERAL
+   ============================================================ */
+
+.o0 {
+  opacity: 0;
+}
+.o1 {
+  opacity: 1;
+}
+.fade-md {
+  transition: opacity 300ms;
+}
+.min-height-1-line {
+  min-height: $font-size-base * $line-height-base + 1;
+}
+
+.no-line-break,
+.wsnw {
+  white-space: nowrap;
+}
+.cp {
+  cursor: pointer;
+}
+.cm {
+  cursor: move;
+}
+.vh {
+  visibility: hidden;
+}
+.no-outline {
+  &,
+  &:focus,
+  &:hover,
+  &:focus:hover {
+    outline: none !important;
+  }
+}
+.no-underline {
+  &,
+  &:focus,
+  &:hover,
+  &:focus:hover {
+    text-decoration: none !important;
+  }
+}
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+// Flip horizontally
+.flip-horizontal {
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: 'FlipH';
+}
+
+// Hide spinner buttons on number inputs.
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.required:before {
+  content: '*';
+  color: red;
+  padding-right: 2px;
+}
+
+/* ============================================================
+   CONTAINERS
+   ============================================================ */
+
+.maskable {
+  position: relative;
+  &:not(.unmasked) {
+    max-height: 120px;
+    overflow: hidden;
+  }
+}
+.maskable-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+.maskable-mask-fade {
+  height: 60px;
+  @include gradient-y(rgba(#fff, 0), #fff);
+}
+.maskable-mask a {
+  display: block;
+  background-color: #fff;
+  color: $primary;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+// Mobile only version
+.m-maskable .maskable-mask {
+  display: none;
+}
+@include mobile() {
+  .m-maskable {
+    position: relative;
+    &:not(.unmasked) {
+      max-height: 120px;
+      overflow: hidden;
+    }
+  }
+  .m-maskable .maskable-mask {
+    display: block;
+  }
+}
+
+// Border Tail - Add an arrow below container.
+.border-tail:after {
+  @include border-tail(#fff);
+}
+@include mobile {
+  .border-tail--mobile:after {
+    @include border-tail(#fff);
+  }
+}
+
+// Video Wrapper
+// - Achieves fluid width sizing and auto height keeping ratio at 16:9.
+//   Wrap youtube embeds with one of these.
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.debuggy pre,
+.debuggy h4 {
+  font-family: monospace;
+}
+.debuggy pre {
+  background-color: #fff;
+  font-size: 10px;
+}
+.debuggy h4 {
+  font-size: 15px;
+  color: $primary;
+}
+
+.collapsible.collapsed .collapsible-body {
+  display: none;
+}
+
+.flex-cols {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flex-col {
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.flex-cols.align-items--center {
+  align-items: center;
+}
+
+@include tablet {
+  .flex-cols.flex-cols--2 .flex-col {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+  .flex-cols.flex-cols--3 .flex-col {
+    flex-basis: 33%;
+    max-width: 33%;
+  }
+  .flex-cols.flex-cols--4 .flex-col {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+}
+
+.fading {
+  opacity: 0.3;
+}
+
+.loadable {
+  position: relative;
+}
+.loadable-glass {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   GRIDS - CSS grids
+   css-tricks.com/snippets/css/complete-guide-grid
+   ============================================================ */
+
+/* grid-sm-3 - CSS grid replacing bootstrap column grids.
+--------------------------------------------------------------- */
+
+.grid-sm-3 {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.grid-item {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@include tablet {
+  // A tablet only three column grid (4 x 4 x 4).
+  .grid-sm-3 {
+    display: -ms-grid;
+    display: grid;
+    grid-template: repeat(9, auto) / repeat(3, 33.33%);
+    -ms-grid-rows: auto auto auto auto auto auto auto auto auto;
+    -ms-grid-columns: 33.33% 33.33% 33.33%;
+  }
+
+  // A tablet only 2 column grid (6 x 6).
+  .grid-sm-2 {
+    display: -ms-grid;
+    display: grid;
+    grid-template: repeat(9, auto) / repeat(2, 50%);
+    -ms-grid-rows: auto auto auto auto auto auto auto auto auto;
+    -ms-grid-columns: 50% 50%;
+  }
+}
+
+@include tablet {
+  @for $i from 1 through 10 {
+    @for $j from 1 through 3 {
+      /* Uses '_' instead of '-' because sass will output nothing for '-' when used inside a for loop. */
+      .grid-item._#{$i}-#{$j} {
+        grid-row-start: #{$i};
+        grid-row-end: #{$i + 1};
+        grid-column-start: #{$j};
+        grid-column-end: #{$j + 1};
+        -ms-grid-row: #{$i};
+        -ms-grid-column: #{$j};
+      }
+    }
+  }
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+.select-all {
+  user-select: all;
+}
+
+/* TEXT COLOR
+--------------------------------------------------------------- */
+
+.text-white {
+  color: $white;
+}
+.text-subtle {
+  color: $gray-dark;
+}
+.text-grey {
+  color: $gray;
+}
+.text-primary {
+  color: $primary;
+}
+.text-secondary {
+  color: $secondary;
+}
+
+/* LINK HOVER
+--------------------------------------------------------------- */
+
+a.text-white:hover,
+a.text-white:focus {
+  color: $white;
+}
+a.text-subtle:hover,
+a.text-subtle:focus {
+  color: $gray-dark;
+}
+a.text-primary:hover,
+a.text-primary:focus {
+  color: $primary;
+}
+a.text-secondary :hover,
+a.text-secondary :focus {
+  color: $secondary;
+}
+
+/* TEXT TRANSFORM
+--------------------------------------------------------------- */
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+.text-underline {
+  text-decoration: underline;
+}
+.text-strike {
+  text-decoration: line-through;
+}
+.text-italic {
+  font-style: italic;
+}
+.wbba {
+  word-break: break-all;
+}
+
+/* TEXT SIZE
+--------------------------------------------------------------- */
+// mobile font sizes
+.font-size-sm {
+  font-size: $font-size-sm;
+}
+.font-size-base {
+  font-size: $font-size-base;
+}
+.font-size-lg {
+  font-size: $font-size-lg;
+}
+
+@include tablet {
+  // tablet and up font sizes
+  .font-size-sm-tb {
+    font-size: $font-size-sm;
+  }
+  .font-size-base-tb {
+    font-size: $font-size-base;
+  }
+  .font-size-lg-tb {
+    font-size: $font-size-lg;
+  }
+}
+
+/* TEXT ALIGNMENT
+--------------------------------------------------------------- */
+.tal,
+.text-left {
+  text-align: left !important;
+}
+.tac,
+.text-center {
+  text-align: center !important;
+}
+.tar,
+.text-right {
+  text-align: right !important;
+}
+
+/* TEXT WEIGHT
+--------------------------------------------------------------- */
+
+.text-bold,
+.fwb {
+  font-weight: bold !important;
+}
+.fwn {
+  font-weight: normal !important;
+}
+
+/* ============================================================
+   SPACING
+   ============================================================ */
+
+.padded-xl {
+  padding: 60px;
+}
+.padded-lg {
+  padding: 40px;
+}
+.padded {
+  padding: 20px;
+}
+.padded-md {
+  padding: 15px;
+}
+.padded-sm {
+  padding: 10px;
+}
+.padded-xs {
+  padding: 5px;
+}
+
+.padded-up-xl {
+  padding-bottom: 60px;
+}
+.padded-up-lg {
+  padding-bottom: 40px;
+}
+.padded-up {
+  padding-bottom: 20px;
+}
+.padded-up-md {
+  padding-bottom: 15px;
+}
+.padded-up-sm {
+  padding-bottom: 10px;
+}
+
+.padded-up-xs {
+  padding-bottom: 5px;
+}
+.padded-down-xl {
+  padding-top: 60px;
+}
+.padded-down-lg {
+  padding-top: 40px;
+}
+.padded-down {
+  padding-top: 20px;
+}
+.padded-down-md {
+  padding-top: 15px;
+}
+.padded-down-sm {
+  padding-top: 10px;
+}
+.padded-down-xs {
+  padding-top: 5px;
+}
+
+.padded-right-xl {
+  padding-left: 60px;
+}
+.padded-right-lg {
+  padding-left: 40px;
+}
+.padded-right {
+  padding-left: 20px;
+}
+.padded-right-md {
+  padding-left: 15px;
+}
+.padded-right-sm {
+  padding-left: 10px;
+}
+.padded-right-xs {
+  padding-left: 5px;
+}
+
+.padded-left-xl {
+  padding-right: 60px;
+}
+.padded-left-lg {
+  padding-right: 40px;
+}
+.padded-left {
+  padding-right: 20px;
+}
+.padded-left-md {
+  padding-right: 15px;
+}
+.padded-left-sm {
+  padding-right: 10px;
+}
+.padded-left-xs {
+  padding-right: 5px;
+}
+
+// Mobile only
+@include mobile {
+  .m-padded-xl {
+    padding: 60px;
+  }
+  .m-padded-lg {
+    padding: 40px;
+  }
+  .m-padded {
+    padding: 20px;
+  }
+  .m-padded-md {
+    padding: 15px;
+  }
+  .m-padded-sm {
+    padding: 10px;
+  }
+  .m-padded-xs {
+    padding: 5px;
+  }
+
+  .m-padded-up-xl {
+    padding-bottom: 60px;
+  }
+  .m-padded-up-lg {
+    padding-bottom: 40px;
+  }
+  .m-padded-up {
+    padding-bottom: 20px;
+  }
+  .m-padded-up-md {
+    padding-bottom: 15px;
+  }
+  .m-padded-up-sm {
+    padding-bottom: 10px;
+  }
+  .m-padded-up-xs {
+    padding-bottom: 5px;
+  }
+
+  .m-padded-down-xl {
+    padding-top: 60px;
+  }
+  .m-padded-down-lg {
+    padding-top: 40px;
+  }
+  .m-padded-down {
+    padding-top: 20px;
+  }
+  .m-padded-down-md {
+    padding-top: 15px;
+  }
+  .m-padded-down-sm {
+    padding-top: 10px;
+  }
+  .m-padded-down-xs {
+    padding-top: 5px;
+  }
+
+  .m-padded-right-xl {
+    padding-left: 60px;
+  }
+  .m-padded-right-lg {
+    padding-left: 40px;
+  }
+  .m-padded-right {
+    padding-left: 20px;
+  }
+  .m-padded-right-md {
+    padding-left: 15px;
+  }
+  .m-padded-right-sm {
+    padding-left: 10px;
+  }
+  .m-padded-right-xs {
+    padding-left: 5px;
+  }
+
+  .m-padded-left-xl {
+    padding-right: 60px;
+  }
+  .m-padded-left-lg {
+    padding-right: 40px;
+  }
+  .m-padded-left {
+    padding-right: 20px;
+  }
+  .m-padded-left-md {
+    padding-right: 15px;
+  }
+  .m-padded-left-sm {
+    padding-right: 10px;
+  }
+  .m-padded-left-xs {
+    padding-right: 5px;
+  }
+}
+
+// Desktop only
+@include tablet {
+  .d-padded-xl {
+    padding: 60px;
+  }
+  .d-padded-lg {
+    padding: 40px;
+  }
+  .d-padded {
+    padding: 20px;
+  }
+  .d-padded-md {
+    padding: 15px;
+  }
+  .d-padded-sm {
+    padding: 10px;
+  }
+  .d-padded-xs {
+    padding: 5px;
+  }
+
+  .d-padded-up-xl {
+    padding-bottom: 60px;
+  }
+  .d-padded-up-lg {
+    padding-bottom: 40px;
+  }
+  .d-padded-up {
+    padding-bottom: 20px;
+  }
+  .d-padded-up-md {
+    padding-bottom: 15px;
+  }
+  .d-padded-up-sm {
+    padding-bottom: 10px;
+  }
+  .d-padded-up-xs {
+    padding-bottom: 5px;
+  }
+
+  .d-padded-down-xl {
+    padding-top: 60px;
+  }
+  .d-padded-down-lg {
+    padding-top: 40px;
+  }
+  .d-padded-down {
+    padding-top: 20px;
+  }
+  .d-padded-down-md {
+    padding-top: 15px;
+  }
+  .d-padded-down-sm {
+    padding-top: 10px;
+  }
+  .d-padded-down-xs {
+    padding-top: 5px;
+  }
+
+  .d-padded-right-xl {
+    padding-left: 60px;
+  }
+  .d-padded-right-lg {
+    padding-left: 40px;
+  }
+  .d-padded-right {
+    padding-left: 20px;
+  }
+  .d-padded-right-md {
+    padding-left: 15px;
+  }
+  .d-padded-right-sm {
+    padding-left: 10px;
+  }
+  .d-padded-right-xs {
+    padding-left: 5px;
+  }
+
+  .d-padded-left-xl {
+    padding-right: 60px;
+  }
+  .d-padded-left-lg {
+    padding-right: 40px;
+  }
+  .d-padded-left {
+    padding-right: 20px;
+  }
+  .d-padded-left-md {
+    padding-right: 15px;
+  }
+  .d-padded-left-sm {
+    padding-right: 10px;
+  }
+  .d-padded-left-xs {
+    padding-right: 5px;
+  }
+}
+
+.bump-xl {
+  margin: 60px;
+}
+.bump-lg {
+  margin: 40px;
+}
+.bump {
+  margin: 20px;
+}
+.bump-md {
+  margin: 15px;
+}
+.bump-sm {
+  margin: 10px;
+}
+.bump-xs {
+  margin: 5px;
+}
+
+.bump-up-xl {
+  margin-bottom: 60px;
+}
+.bump-up-lg {
+  margin-bottom: 40px;
+}
+.bump-up {
+  margin-bottom: 20px;
+}
+.bump-up-md {
+  margin-bottom: 15px;
+}
+.bump-up-sm {
+  margin-bottom: 10px;
+}
+.bump-up-xs {
+  margin-bottom: 5px;
+}
+
+.bump-down-xl {
+  margin-top: 60px;
+}
+.bump-down-lg {
+  margin-top: 40px;
+}
+.bump-down {
+  margin-top: 20px;
+}
+.bump-down-md {
+  margin-top: 15px;
+}
+.bump-down-sm {
+  margin-top: 10px;
+}
+.bump-down-xs {
+  margin-top: 5px;
+}
+
+.bump-right-xl {
+  margin-left: 60px;
+}
+.bump-right-lg {
+  margin-left: 40px;
+}
+.bump-right {
+  margin-left: 20px;
+}
+.bump-right-md {
+  margin-left: 15px;
+}
+.bump-right-sm {
+  margin-left: 10px;
+}
+.bump-right-xs {
+  margin-left: 5px;
+}
+
+.bump-left-xl {
+  margin-right: 60px;
+}
+.bump-left-lg {
+  margin-right: 40px;
+}
+.bump-left {
+  margin-right: 20px;
+}
+.bump-left-md {
+  margin-right: 15px;
+}
+.bump-left-sm {
+  margin-right: 10px;
+}
+.bump-left-xs {
+  margin-right: 5px;
+}
+
+// Mobile only
+@include mobile {
+  .m-bump-up-xl {
+    margin-bottom: 60px;
+  }
+  .m-bump-up-lg {
+    margin-bottom: 40px;
+  }
+  .m-bump-up {
+    margin-bottom: 20px;
+  }
+  .m-bump-up-md {
+    margin-bottom: 15px;
+  }
+  .m-bump-up-sm {
+    margin-bottom: 10px;
+  }
+  .m-bump-up-xs {
+    margin-bottom: 5px;
+  }
+
+  .m-bump-down-xl {
+    margin-top: 60px;
+  }
+  .m-bump-down-lg {
+    margin-top: 40px;
+  }
+  .m-bump-down {
+    margin-top: 20px;
+  }
+  .m-bump-down-md {
+    margin-top: 15px;
+  }
+  .m-bump-down-sm {
+    margin-top: 10px;
+  }
+  .m-bump-down-xs {
+    margin-top: 5px;
+  }
+
+  .m-bump-right-xl {
+    margin-left: 60px;
+  }
+  .m-bump-right-lg {
+    margin-left: 40px;
+  }
+  .m-bump-right {
+    margin-left: 20px;
+  }
+  .m-bump-right-md {
+    margin-left: 15px;
+  }
+  .m-bump-right-sm {
+    margin-left: 10px;
+  }
+  .m-bump-right-xs {
+    margin-left: 5px;
+  }
+
+  .m-bump-left-xl {
+    margin-right: 60px;
+  }
+  .m-bump-left-lg {
+    margin-right: 40px;
+  }
+  .m-bump-left {
+    margin-right: 20px;
+  }
+  .m-bump-left-md {
+    margin-right: 15px;
+  }
+  .m-bump-left-sm {
+    margin-right: 10px;
+  }
+  .m-bump-left-xs {
+    margin-right: 5px;
+  }
+}
+
+// Desktop only
+@include tablet {
+  .d-bump-up-xl {
+    margin-bottom: 60px;
+  }
+  .d-bump-up-lg {
+    margin-bottom: 40px;
+  }
+  .d-bump-up {
+    margin-bottom: 20px;
+  }
+  .d-bump-up-md {
+    margin-bottom: 15px;
+  }
+  .d-bump-up-sm {
+    margin-bottom: 10px;
+  }
+  .d-bump-up-xs {
+    margin-bottom: 5px;
+  }
+
+  .d-bump-down-xl {
+    margin-top: 60px;
+  }
+  .d-bump-down-lg {
+    margin-top: 40px;
+  }
+  .d-bump-down {
+    margin-top: 20px;
+  }
+  .d-bump-down-md {
+    margin-top: 15px;
+  }
+  .d-bump-down-sm {
+    margin-top: 10px;
+  }
+  .d-bump-down-xs {
+    margin-top: 5px;
+  }
+
+  .d-bump-right-xl {
+    margin-left: 60px;
+  }
+  .d-bump-right-lg {
+    margin-left: 40px;
+  }
+  .d-bump-right {
+    margin-left: 20px;
+  }
+  .d-bump-right-md {
+    margin-left: 15px;
+  }
+  .d-bump-right-sm {
+    margin-left: 10px;
+  }
+  .d-bump-right-xs {
+    margin-left: 5px;
+  }
+
+  .d-bump-left-xl {
+    margin-right: 60px;
+  }
+  .d-bump-left-lg {
+    margin-right: 40px;
+  }
+  .d-bump-left {
+    margin-right: 20px;
+  }
+  .d-bump-left-md {
+    margin-right: 15px;
+  }
+  .d-bump-left-sm {
+    margin-right: 10px;
+  }
+  .d-bump-left-xs {
+    margin-right: 5px;
+  }
+}
+
+.m0 {
+  margin: 0;
+}
+.mt0 {
+  margin-top: 0;
+}
+.mr0 {
+  margin-right: 0;
+}
+.mb0 {
+  margin-bottom: 0;
+}
+.ml0 {
+  margin-left: 0;
+}
+.margin-centering {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p0 {
+  padding: 0;
+}
+.pt0 {
+  padding-top: 0;
+}
+.pr0 {
+  padding-right: 0;
+}
+.pb0 {
+  padding-bottom: 0;
+}
+.pl0 {
+  padding-left: 0;
+}
+
+/* ============================================================
+   SCROLLING
+   ============================================================ */
+
+.scroll-xl,
+.scroll-lg,
+.scroll-md,
+.scroll-sm {
+  overflow-y: auto;
+}
+.scroll-xl {
+  max-height: 600px;
+}
+.scroll-lg {
+  max-height: 350px;
+}
+.scroll-md {
+  max-height: 200px;
+}
+.scroll-sm {
+  max-height: 160px;
+}
+
+// Desktop only
+@media (min-width: $screen-tablet) {
+  .d-scroll-xl,
+  .d-scroll-lg,
+  .d-scroll-md,
+  .d-scroll-sm {
+    overflow-y: auto;
+  }
+  .d-scroll-xl {
+    max-height: 600px;
+  }
+  .d-scroll-lg {
+    max-height: 350px;
+  }
+  .d-scroll-md {
+    max-height: 200px;
+  }
+  .d-scroll-sm {
+    max-height: 160px;
+  }
+}
+
+/* ============================================================
+   SIZING
+   ============================================================ */
+
+.fluid,
+.full-width {
+  width: 100%;
+}
+.half-width {
+  width: 50%;
+}
+.auto-width {
+  width: auto;
+}
+.ha {
+  height: auto;
+}
+
+/* ============================================================
+   POSITIONING
+   ============================================================ */
+
+.fl {
+  float: left !important;
+}
+.fr {
+  float: right !important;
+}
+.db {
+  display: block !important;
+}
+.di {
+  display: inline !important;
+}
+.dib {
+  display: inline-block !important;
+}
+.pr {
+  position: relative !important;
+}
+.pa {
+  position: absolute !important;
+}
+
+.l0 {
+  left: 0 !important;
+}
+.l100 {
+  left: 100% !important;
+}
+.r0 {
+  right: 0 !important;
+}
+.r100 {
+  right: 100% !important;
+}
+.t0 {
+  top: 0 !important;
+}
+.t100 {
+  top: 100% !important;
+}
+.b0 {
+  bottom: 0 !important;
+}
+.b100 {
+  bottom: 100% !important;
+}
+
+.vam {
+  vertical-align: middle !important;
+}
+.vat {
+  vertical-align: top !important;
+}
+.vab {
+  vertical-align: bottom !important;
+}
+.vatt {
+  vertical-align: text-top !important;
+}
+.vatb {
+  vertical-align: text-bottom !important;
+}
+
+// Mobile only positioning, add more as needed.
+@include mobile {
+  .m-tal {
+    text-align: left;
+  }
+  .m-tac {
+    text-align: center;
+  }
+  .m-tar {
+    text-align: right;
+  }
+
+  .m-db {
+    display: block;
+  }
+  .m-dib {
+    display: inline-block;
+  }
+}
+
+// Desktop only positioning
+@include tablet {
+  .d-tal {
+    text-align: left;
+  }
+  .d-tac {
+    text-align: center;
+  }
+  .d-tar {
+    text-align: right;
+  }
+
+  .d-db {
+    display: block;
+  }
+  .d-dib {
+    display: inline-block;
+  }
+}
+
+.v-center-block {
+  @include v-center-block();
+}
+
+/* ============================================================
+   ROTATION
+   ============================================================ */
+
+.rotate-cw-45 {
+  transform: rotate(45deg);
+}
+.rotate-cw-90 {
+  transform: rotate(90deg);
+}
+.rotate-cw-135 {
+  transform: rotate(135deg);
+}
+.rotate-cw-180 {
+  transform: rotate(180deg);
+}
+.rotate-ccw-45 {
+  transform: rotate(-45deg);
+}
+.rotate-ccw-90 {
+  transform: rotate(-90deg);
+}
+.rotate-ccw-135 {
+  transform: rotate(-135deg);
+}

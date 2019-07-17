@@ -1,15 +1,9 @@
 import {
-  screenSmMin,
-  screenDesktop,
-  screenLgMin,
-  screenXsMax,
-  screenSmMax,
-  screenLgMin
+  screen_tablet,
+  screen_desktop,
+  screen_mobile
 } from './variables-export.scss';
 
-export const tablet = `@media (min-width: ${screenSmMin})`;
-export const desktop = `@media (min-width: ${screenDesktop})`;
-export const desktopLg = `@media (min-width: ${screenLgMin})`;
-export const mobile = `@media (max-width: ${screenXsMax})`;
-export const smDown = `@media (max-width: ${screenSmMax})`;
-export const maxDesktopLg = `@media (max-width: ${screenLgMin})`;
+export const tablet = `@media (min-width: ${screen_tablet})`;
+export const desktop = `@media (min-width: ${screen_desktop})`;
+export const mobile = `@media (max-width: ${screen_mobile})`;

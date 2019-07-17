@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import ControlLabel from 'react-bootstrap/es/ControlLabel';
+import FormLabel from 'react-bootstrap/es/FormLabel';
 import FormGroup from 'react-bootstrap/es/FormGroup';
-import HelpBlock from 'react-bootstrap/es/HelpBlock';
 
 import { rif } from '../../jsx';
 
@@ -42,8 +41,8 @@ class Select extends Component {
             {label && (
               <>
                 {required && <span className="required-label">*</span>}
-                <ControlLabel>{label}</ControlLabel>
-                {desc && <HelpBlock>{desc}</HelpBlock>}
+                <FormLabel>{label}</FormLabel>
+                {desc && <div className="control-desc">{desc}</div>}
               </>
             )}
             <select

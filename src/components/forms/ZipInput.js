@@ -1,5 +1,4 @@
 import React from 'react';
-import { bool } from 'prop-types';
 
 import TextInput from './text/TextInput';
 

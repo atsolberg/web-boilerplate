@@ -1,11 +1,10 @@
 import { css } from '@emotion/core';
 
 import {
-  brandColorPrimaryBlue,
-  brandColorSecondaryBlue,
-  globalColorBlack,
-  globalColorGrey,
-  globalColorDarkGrey
+  primary,
+  black,
+  gray,
+  gray_dark
 } from '../../../styles/variables-export.scss';
 
 const styles = css`
@@ -21,7 +20,7 @@ const styles = css`
   }
 
   input ~ .input-checkmark {
-    box-shadow: inset 0 0 0 1px ${globalColorDarkGrey};
+    box-shadow: inset 0 0 0 1px ${gray_dark};
     border-radius: 2px;
     height: 16px;
     left: 0;
@@ -40,18 +39,18 @@ const styles = css`
 
   input:focus ~ .input-checkmark,
   input:active ~ .input-checkmark {
-    background-color: ${globalColorGrey};
+    background-color: ${gray};
     transition: all 100ms ease;
   }
 
   input:checked ~ .input-checkmark {
-    background-color: ${brandColorSecondaryBlue};
+    background-color: ${primary};
     box-shadow: none;
     transition: all 100ms ease;
   }
 
   input:checked:focus ~ .input-checkmark {
-    background-color: ${brandColorPrimaryBlue};
+    background-color: ${primary};
     transition: all 100ms ease;
   }
 
@@ -68,11 +67,11 @@ const styles = css`
   }
 
   .disabled label {
-    color: ${globalColorBlack};
+    color: ${black};
   }
 
   .disabled input ~ .input-checkmark {
-    background-color: ${globalColorDarkGrey};
+    background-color: ${gray_dark};
     box-shadow: none;
   }
 

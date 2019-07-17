@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import cx from 'classnames';
-import ControlLabel from 'react-bootstrap/es/ControlLabel';
+import FormLabel from 'react-bootstrap/es/FormLabel';
 import FormControl from 'react-bootstrap/es/FormControl';
 import FormGroup from 'react-bootstrap/es/FormGroup';
-import HelpBlock from 'react-bootstrap/es/HelpBlock';
 
 import { string, bool, node, number } from 'prop-types';
 import { rif } from '../../../jsx';
@@ -48,11 +47,11 @@ function TextArea({
         >
           {label && (
             <>
-              <ControlLabel>
+              <FormLabel>
                 {required && <span className="required-label">*</span>}
                 {label}
-              </ControlLabel>
-              {helpText && <HelpBlock>{helpText}</HelpBlock>}
+              </FormLabel>
+              {helpText && <div className="control-desc">{helpText}</div>}
             </>
           )}
           <FormControl componentClass="textarea" {...provided} {...rest} />

@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import { globalColorDarkGrey } from '../../../styles/variables-export.scss';
+import { gray_dark } from '../../../styles/variables-export.scss';
 
 const styles = css`
   label + span.help-block {
@@ -18,7 +18,7 @@ const styles = css`
   }
 
   span.secondary-description {
-    color: ${globalColorDarkGrey};
+    color: ${gray_dark};
     float: right;
   }
 

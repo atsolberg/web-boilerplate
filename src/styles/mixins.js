@@ -1,8 +1,7 @@
 import { css } from '@emotion/core';
 import { transparentize } from 'polished';
 
-import variables from './variables';
-import { gradientHorizontalThreeColors } from './bs/_gradients';
+import { primary } from './variables-export.scss';
 import { tablet } from './breakpoints';
 
 /* ============================================================
@@ -13,10 +12,9 @@ import { tablet } from './breakpoints';
     TABLE OF CONTENTS
 
     MISC
-    FONTS
+    GRADIENTS
     POSITIONING
     BACKGROUNDS
-    BORDERS
     GRID
 
    ============================================================ */
@@ -24,16 +22,6 @@ import { tablet } from './breakpoints';
 /* ============================================================
    MISC
    ============================================================ */
-
-// Slide In
-export const willSlideInHorizontal = () => `
-  transform: translateX(100%);
-`;
-
-// This stupid but necessary until we update the `a` styles in base.scss
-export const linkColor = () => `
-  &, &:hover, &:focus, &:active { color: ${variables.brandColorSecondaryBlue}; }
-`;
 
 export const clearFix = () => `
   &:before,
@@ -44,6 +32,73 @@ export const clearFix = () => `
   &:after {
     clear: both;
   }
+`;
+
+/* ============================================================
+   GRADIENTS
+   ============================================================ */
+
+// Horizontal gradient, from left to right
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+export const gradientHorizontal = (
+  startColor = '#555',
+  endColor = '#333',
+  startPercent = '0%',
+  endPercent = '100%'
+) => `
+  background-image: linear-gradient(to right, ${startColor} ${startPercent}, ${endColor} ${endPercent});
+  background-repeat: repeat-x;
+`;
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+export const gradientVertical = (
+  startColor = '#555',
+  endColor = '#333',
+  startPercent = '0%',
+  endPercent = '100%'
+) => `
+  background-image: linear-gradient(to bottom, ${startColor} ${startPercent}, ${endColor} ${endPercent});
+  background-repeat: repeat-x;
+`;
+
+export const gradientDirectional = (
+  startColor = '#555',
+  endColor = '#333',
+  deg = '45deg'
+) => `
+  background-repeat: repeat-x;
+  background-image: linear-gradient(${deg}, ${startColor}, ${endColor});
+`;
+export const gradientHorizontalThreeColors = (
+  startColor = '#00b3ee',
+  midColor = '#7a43b6',
+  colorStop = '50%',
+  endColor = '#c3325f'
+) => `
+  background-image: linear-gradient(to right, ${startColor}, ${midColor} ${colorStop}, ${endColor});
+  background-repeat: no-repeat;
+`;
+export const gradientVerticalThreeColors = (
+  startColor = '#00b3ee',
+  midColor = '#7a43b6',
+  colorStop = '50%',
+  endColor = '#c3325f'
+) => `
+  background-image: linear-gradient(${startColor}, ${midColor} ${colorStop}, ${endColor});
+  background-repeat: no-repeat;
+`;
+export const gradientRadial = (innerColor = '#555', outerColor = '#333') => `
+  background-image: radial-gradient(circle, ${innerColor}, ${outerColor});
+  background-repeat: no-repeat;
+`;
+export const gradientStriped = (
+  color = 'rgba(255,255,255,.15)',
+  angle = '45deg'
+) => `
+  background-image: linear-gradient(${angle}, ${color} 25%, transparent 25%, transparent 50%, ${color} 50%, ${color} 75%, transparent 75%, transparent);
 `;
 
 /* ============================================================
@@ -88,7 +143,7 @@ export const bgCenterCover = (img) => `
 `;
 
 export const bgGradient = (
-  bgcolor = variables.brandColorSecondaryBlue,
+  bgcolor = primary,
   transparency = '.50'
 ) => `
   background-color: ${bgcolor};
@@ -97,37 +152,6 @@ export const bgGradient = (
     transparentize(transparency, bgcolor),
     bgcolor
   )}
-`;
-
-/* ============================================================
-   BORDERS
-   ============================================================ */
-
-export const borderTail = (color, height = '18px', width = '15px') => `
-  content:'';
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 0;
-  height: 0;
-  border-top: solid ${height} ${color};
-  border-left: solid ${width} transparent;
-  border-right: solid ${width} transparent;
-  z-index: 1;
-`;
-
-export const noOutline = () => `
- &.active.focus, &.active:focus,
- &:active.focus, &:active:focus,
- &.focus, &:focus {
-    outline: none !important;
-  }
-`;
-
-export const shadow = () => `
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .24);
 `;
 
 /* ============================================================

@@ -1,12 +1,12 @@
 import { css } from '@emotion/core/types';
-import { globalColorGrey } from '../../styles/variables-export.scss';
+import { gray } from '../../styles/variables-export.scss';
 import { mobile, tablet } from '../../styles/breakpoints';
 import { clearFix } from '../../styles/mixins';
 
 const styles = css`
   ${clearFix()};
   padding-bottom: 15px;
-  border-bottom: 1px solid ${globalColorGrey};
+  border-bottom: 1px solid ${gray};
   margin: 20px 0;
 
   .paging-header-count {

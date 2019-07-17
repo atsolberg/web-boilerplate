@@ -2,12 +2,12 @@ import { css } from '@emotion/core';
 import { desktop, mobile } from '../../styles/breakpoints';
 
 import {
-  globalColorLightGrey,
-  globalColorGrey,
-  globalColorDarkGrey,
-  globalColorBlack,
-  borderRadiusBase,
-  brandColorSecondaryBlue
+  light,
+  gray,
+  gray_dark,
+  black,
+  border_radius_base,
+  primary
 } from '../../styles/variables-export.scss';
 
 const styles = {
@@ -32,12 +32,12 @@ const styles = {
 
       label {
         font-weight: inherit;
-        border: 1px solid ${globalColorGrey};
+        border: 1px solid ${gray};
         &:focus {
-          border-color: ${brandColorSecondaryBlue};
+          border-color: ${primary};
           outline: none;
         }
-        border-radius: ${borderRadiusBase};
+        border-radius: ${border_radius_base};
         padding: 12px 16px;
         line-height: 1.3;
         cursor: pointer;
@@ -65,12 +65,12 @@ const styles = {
       }
 
       &.unavailable label {
-        background-color: ${globalColorLightGrey};
+        background-color: ${light};
         text-decoration: line-through;
-        color: ${globalColorDarkGrey};
+        color: ${gray_dark};
       }
       &.unavailable.active label {
-        border-color: ${globalColorDarkGrey};
+        border-color: ${gray_dark};
       }
     }
 
@@ -88,7 +88,7 @@ const styles = {
       min-width: 88px;
 
       &.unavailable {
-        color: ${globalColorLightGrey};
+        color: ${light};
       }
 
       img {
@@ -100,7 +100,7 @@ const styles = {
   `,
 
   expander: css`
-    color: ${globalColorBlack};
+    color: ${black};
     text-decoration: underline;
     font-size: 14px;
     border: none;

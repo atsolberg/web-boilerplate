@@ -26,13 +26,18 @@
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.9",
     "@emotion/core": "^10.0.6",
-    "bootstrap-sass": "^3.4.1",
+    "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
+    "font-awesome": "^4.7.0",
+    "immer": "^3.1.3",
     "jquery": "^3.4.1",
+    "js-cookie": "^2.2.0",
+    "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
+    "react-phone-number-input": "^2.3.20",
     "react-transition-group": "^4.2.1"
   }
 }

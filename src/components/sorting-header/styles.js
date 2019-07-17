@@ -1,13 +1,13 @@
 import { css } from '@emotion/core';
 
-import { brandColorSecondaryBlue } from '../../styles/variables-export.scss';
+import { primary } from '../../styles/variables-export.scss';
 
 const styles = css`
   &.sorting-header:hover {
     cursor: pointer;
   }
   &.sorting-header .fa {
-    color: ${brandColorSecondaryBlue};
+    color: ${primary};
   }
   &.sorting-header:not(.active) .fa {
     visibility: hidden;

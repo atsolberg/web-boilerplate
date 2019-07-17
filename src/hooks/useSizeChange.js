@@ -2,22 +2,24 @@ import { useEffect } from 'react';
 import logger from '../logger';
 
 /**
- * @param {Function} sizeFunc - Function to call immediately, on window resize, and orientation change
+ * @param {Function} onSizeChange - Function to call immediately, on window resize, and orientation change
  * @param {Array} deps - Dependencies for the useEffect hook.
  */
-export default function useSizeChange(sizeFunc, deps) {
+function useSizeChange(onSizeChange, deps) {
   useEffect(() => {
-    if (typeof sizeFunc !== 'function') {
-      logger.error('Expected sizeFunc to be a function', sizeFunc);
+    if (typeof onSizeChange !== 'function') {
+      logger.error('Expected onSizeChange to be a function', onSizeChange);
       return;
     }
-    sizeFunc();
-    window.addEventListener('resize', sizeFunc);
-    window.addEventListener('orientationchange', sizeFunc);
+    onSizeChange();
+    window.addEventListener('resize', onSizeChange);
+    window.addEventListener('orientationchange', onSizeChange);
 
     return () => {
-      window.removeEventListener('resize', sizeFunc);
-      window.removeEventListener('orientationchange', sizeFunc);
+      window.removeEventListener('resize', onSizeChange);
+      window.removeEventListener('orientationchange', onSizeChange);
     };
   }, deps);
 }
+
+export default useSizeChange;

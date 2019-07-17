@@ -5,7 +5,7 @@
  *
  * USAGE: Wrap your content in this component and then in any child component
  * of your tree, simply use the `useABTests()` hook to get the data.
- * To set test data, from monetate action, use `
+ * To set test data use `
  *
  * Example:
  * // App.js
@@ -28,7 +28,7 @@
  *   const tests = useABTests();
  *   return (
  *     <span>
- *       {tests.superLoudCTA ? 'SHOP NOW!' : 'Shop Beds'}
+ *       {tests.superLoudCTA ? 'SHOP NOW!' : 'Shop Things'}
  *     </span>
  *   );
  * }
